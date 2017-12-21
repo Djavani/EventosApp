@@ -11,10 +11,14 @@
 	<title>EventosApp</title>
 </head>
 
-<body>	
-	<h1>Lista de Eventos</h1>	
-	<a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar evento</a>
-	<table class="container">
+<body>
+	<div class="container">
+		<div class="col s12 m2 z-depth-4">     
+    		<h3>Lista de Eventos</h3>    		
+    	</div>	
+	</div>
+	<hr/>
+	<table class="container striped">
 		<thead>
 			<tr>
 				<th>Nome</th>
@@ -24,15 +28,18 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr th:each="evento : ${eventos}">		
-			<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
-			<td><span th:text="${evento.local}"></span></td>
-			<td><span th:text="${evento.data}"></span></td>
-			<td><span th:text="${evento.horario}"></span></td>
-		</tr>	
-	</tbody>
-	
+			<tr th:each="evento : ${eventos}">		
+				<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
+				<td><span th:text="${evento.local}"></span></td>
+				<td><span th:text="${evento.data}"></span></td>
+				<td><span th:text="${evento.horario}"></span></td>
+			</tr>	
+		</tbody>	
 	</table>
+	<hr/>
+	<div class="container">
+		<a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar evento</a>
+	</div>
 	<!--Import jQuery before materialize.js-->
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>

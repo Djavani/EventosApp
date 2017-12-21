@@ -12,29 +12,36 @@
 </head>
 
 <body>	
-	<h1>Evento</h1>	
-	<a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Lista de eventos</a>
-	<div class="container">
-		<div th:each="evento : ${evento}" class="card-stacked">
-			<div class="card">
-				<div class="card-content">
-					<div class="row">
-						<p>Nome: <span th:text="${evento.nome}"></span></p>
-						<p>Local: <span th:text="${evento.local}"></span></p>
-						<p>Data: <span th:text="${evento.data}"></span></p>
-						<p>Hora: <span th:text="${evento.horario}"></span></p>
-					</div>
+	<h3>Evento</h3>	
+	<a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Lista de eventos</a>	
+		<div th:each="evento : ${evento}" class="container">
+			<div class="row">
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Hora: <span th:text="${evento.horario}"></span></p>
+			</div>
+			
+			<form method="post">
+				Nome: <input type="text" value="" name="nomeConvidado"></input>
+				Rg: <input type="text" value="" name="rg"></input>
+				<button type="submit" class="waves-effect waves-light btn">Inserir Convidado</button>
+			</form>
+		</div>
+		<div class="container">
+			<h5>Lista de Convidados</h5>
+		</div>
+		<div class="container" th:each="convidado: ${convidados}">		
+			<div class="row">
+				<div class="input-field col s6">
+					<p><span th:text="${convidado.nomeConvidado}"></span></p>
+				</div>
+				<div class="input-field col s3">
+					<p><span th:text="${convidado.rg}"></span></p>
 				</div>
 			</div>
-			<div class="container">
-				<form method="post">
-					Nome: <input type="text" value="" name="nomeConvidado"></input>
-					Rg: <input type="text" value="" name="rg"></input>
-					<button type="submit" class="waves-effect waves-light btn">Inserir Convidado</button>
-				</form>
-			</div>
-		</div>
-	</div>
+		</div>	
+	
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
