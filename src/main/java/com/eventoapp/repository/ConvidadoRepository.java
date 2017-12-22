@@ -8,5 +8,7 @@ import com.eventoapp.model.Evento;
 public interface ConvidadoRepository extends JpaRepository<Convidado, String> {
 	
 	Iterable<Convidado> findByEvento(Evento evento);
+	
+	Convidado findByRg(String rg);
 
 }

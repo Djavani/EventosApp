@@ -24,18 +24,14 @@
 		</nav>
 	</header>		
 		
-	<div th:each="evento : ${evento}" class="container detalhesEvento">
-		<div class="card horizontal">
-			<div class="card-content">
-			<h5>Detalhes do Evento</h5>
-				<div class="row">
-					<p>Nome: <span th:text="${evento.nome}"></span></p>
-					<p>Local: <span th:text="${evento.local}"></span></p>
-					<p>Data: <span th:text="${evento.data}"></span></p>
-					<p>Hora: <span th:text="${evento.horario}"></span></p>
-				</div>
-			</div>
-		</div>
+	<div th:each="evento : ${evento}" class="container detalhesEvento">		
+		<span class="card-title">Detalhes do Evento</span>		
+			<div class="row">
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Hora: <span th:text="${evento.horario}"></span></p>
+			</div>		
 	</div>	
 	<th:block th:include="mensagemValidacao"></th:block>
 	<div class="container formConvidado">		
@@ -51,12 +47,14 @@
 			<tr>
 				<th>Nome convidado:</th>
 				<th>RG:</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="convidado : ${convidados}">
 				<td><span th:text="${convidado.nomeConvidado}"></span></td>
 				<td><span th:text="${convidado.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>		
 	</table>	
